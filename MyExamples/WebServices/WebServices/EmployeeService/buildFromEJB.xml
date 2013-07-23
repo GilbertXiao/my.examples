@@ -1,0 +1,9 @@
+<project name="buildWebservice" default="ear">
+	<target name="ear">
+		<servicegen destEar="EmpService.ear" contextURI="WebServices">
+			<service ejbJar="emp.jar" targetNamespace="http://www.deccansoft.com" serviceName="EmployeeService" serviceURI="/EmployeeService" generateTypes="True" expandMethods="True">
+				<client packageName="empdemo"/>
+			</service>
+		</servicegen>
+	</target>
+</project>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="22.17" errors="1" skipped="0" tests="1" name="org.fusesource.camel.PlaceOrderTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre\bin"/>
+    <property name="java.vm.version" value="19.1-b02"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\DDrive\From\DeccanSoft\camel-example"/>
+    <property name="java.runtime.version" value="1.6.0_24-b07"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="C:\DDrive\From\DeccanSoft\camel-example"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="surefire.real.class.path" value="C:\DDrive\From\DeccanSoft\camel-example\target\surefire\surefirebooter1102059801907335993.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\STALUP~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jdk1.6.0_24/bin/../jre/bin/client;C:/Program Files (x86)/Java/jdk1.6.0_24/bin/../jre/bin;C:/Program Files (x86)/Java/jdk1.6.0_24/bin/../jre/lib/i386;C:\DDrive\LEMA\EAI\2012\ManhattanESB\apache-maven-3.0.3\bin;C:\apache-ant-1.8.2\bin;C:\Program Files (x86)\Java\jdk1.6.0_24\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files (x86)\NTRU Cryptosystems\NTRU TCG Software Stack\bin\;C:\Program Files\NTRU Cryptosystems\NTRU TCG Software Stack\bin\;C:\Program Files\Wave Systems Corp\Gemalto\Access Client\v5\;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;;C:\Program Files\Dell\DW WLAN Card;C:\PROGRA~2\IBM\CLIENT~1\Shared;C:\Program Files (x86)\Rational\common;C:\Program Files (x86)\Rational\ClearCase\bin;c:\program files\borland\StarTeam SDK 2005 R2\Lib;c:\program files\borland\StarTeam SDK 2005 R2\Bin;C:\eclipse-jee-helios-SR2-win32\eclipse;"/>
+    <property name="surefire.test.class.path" value="C:\DDrive\From\DeccanSoft\camel-example\target\test-classes;C:\DDrive\From\DeccanSoft\camel-example\target\classes;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-core\1.6.0\camel-core-1.6.0.jar;C:\Users\stalupula\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-spring\1.6.0\camel-spring-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar;C:\Users\stalupula\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-core\5.2.0\activemq-core-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jms_1.1_spec\1.1.1\geronimo-jms_1.1_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activeio-core\3.1.0\activeio-core-3.1.0.jar;C:\Users\stalupula\.m2\repository\backport-util-concurrent\backport-util-concurrent\2.1\backport-util-concurrent-2.1.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-j2ee-management_1.0_spec\1.0\geronimo-j2ee-management_1.0_spec-1.0.jar;C:\Users\stalupula\.m2\repository\org\apache\xbean\xbean-spring\3.4\xbean-spring-3.4.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-camel\5.2.0\activemq-camel-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jms\1.5.0\camel-jms-1.5.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-jms\2.5.5\spring-jms-2.5.5.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-context-support\2.5.5\spring-context-support-2.5.5.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jta_1.1_spec\1.1.1\geronimo-jta_1.1_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-pool\5.2.0\activemq-pool-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jta_1.0.1B_spec\1.0.1\geronimo-jta_1.0.1B_spec-1.0.1.jar;C:\Users\stalupula\.m2\repository\commons-pool\commons-pool\1.4\commons-pool-1.4.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jaxb\1.6.0\camel-jaxb-1.6.0.jar;C:\Users\stalupula\.m2\repository\javax\xml\bind\jaxb-api\2.1\jaxb-api-2.1.jar;C:\Users\stalupula\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\stalupula\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\stalupula\.m2\repository\com\sun\xml\bind\jaxb-impl\2.1.6\jaxb-impl-2.1.6.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-csv\1.6.0\camel-csv-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\commons\commons-csv\1.0-r706899\commons-csv-1.0-r706899.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jetty\1.6.0\camel-jetty-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-http\1.6.0\camel-http-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-servlet_2.4_spec\1.1.1\geronimo-servlet_2.4_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\stalupula\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\stalupula\.m2\repository\commons-io\commons-io\1.3.2\commons-io-1.3.2.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\jetty\6.1.14\jetty-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\jetty-util\6.1.14\jetty-util-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.14\servlet-api-2.5-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-core\1.6.0\camel-core-1.6.0-tests.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-spring\1.6.0\camel-spring-1.6.0-tests.jar;C:\Users\stalupula\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar;C:\Users\stalupula\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\stalupula\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\stalupula"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Stalupula"/>
+    <property name="java.class.path" value="C:\DDrive\From\DeccanSoft\camel-example\target\test-classes;C:\DDrive\From\DeccanSoft\camel-example\target\classes;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-core\1.6.0\camel-core-1.6.0.jar;C:\Users\stalupula\.m2\repository\commons-logging\commons-logging-api\1.1\commons-logging-api-1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-spring\1.6.0\camel-spring-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-core\2.5.6\spring-core-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-context\2.5.6\spring-context-2.5.6.jar;C:\Users\stalupula\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-beans\2.5.6\spring-beans-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-tx\2.5.6\spring-tx-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-aop\2.5.6\spring-aop-2.5.6.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-core\5.2.0\activemq-core-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jms_1.1_spec\1.1.1\geronimo-jms_1.1_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activeio-core\3.1.0\activeio-core-3.1.0.jar;C:\Users\stalupula\.m2\repository\backport-util-concurrent\backport-util-concurrent\2.1\backport-util-concurrent-2.1.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-j2ee-management_1.0_spec\1.0\geronimo-j2ee-management_1.0_spec-1.0.jar;C:\Users\stalupula\.m2\repository\org\apache\xbean\xbean-spring\3.4\xbean-spring-3.4.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-camel\5.2.0\activemq-camel-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jms\1.5.0\camel-jms-1.5.0.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-jms\2.5.5\spring-jms-2.5.5.jar;C:\Users\stalupula\.m2\repository\org\springframework\spring-context-support\2.5.5\spring-context-support-2.5.5.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jta_1.1_spec\1.1.1\geronimo-jta_1.1_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\org\apache\activemq\activemq-pool\5.2.0\activemq-pool-5.2.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-jta_1.0.1B_spec\1.0.1\geronimo-jta_1.0.1B_spec-1.0.1.jar;C:\Users\stalupula\.m2\repository\commons-pool\commons-pool\1.4\commons-pool-1.4.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jaxb\1.6.0\camel-jaxb-1.6.0.jar;C:\Users\stalupula\.m2\repository\javax\xml\bind\jaxb-api\2.1\jaxb-api-2.1.jar;C:\Users\stalupula\.m2\repository\javax\xml\stream\stax-api\1.0-2\stax-api-1.0-2.jar;C:\Users\stalupula\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\stalupula\.m2\repository\com\sun\xml\bind\jaxb-impl\2.1.6\jaxb-impl-2.1.6.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-csv\1.6.0\camel-csv-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\commons\commons-csv\1.0-r706899\commons-csv-1.0-r706899.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-jetty\1.6.0\camel-jetty-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-http\1.6.0\camel-http-1.6.0.jar;C:\Users\stalupula\.m2\repository\org\apache\geronimo\specs\geronimo-servlet_2.4_spec\1.1.1\geronimo-servlet_2.4_spec-1.1.1.jar;C:\Users\stalupula\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\stalupula\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\stalupula\.m2\repository\commons-io\commons-io\1.3.2\commons-io-1.3.2.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\jetty\6.1.14\jetty-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\jetty-util\6.1.14\jetty-util-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\mortbay\jetty\servlet-api-2.5\6.1.14\servlet-api-2.5-6.1.14.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-core\1.6.0\camel-core-1.6.0-tests.jar;C:\Users\stalupula\.m2\repository\org\apache\camel\camel-spring\1.6.0\camel-spring-1.6.0-tests.jar;C:\Users\stalupula\.m2\repository\junit\junit\3.8.2\junit-3.8.2.jar;C:\Users\stalupula\.m2\repository\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;C:\Users\stalupula\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.6.0_24"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\lib\modules\jdk.boot.jar;C:\Program Files (x86)\Java\jdk1.6.0_24\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="localRepository" value="C:\Users\stalupula\.m2\repository"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="22.064" classname="org.fusesource.camel.PlaceOrderTest" name="testPlacingOrders">
+    <error message="mock:orders Received message count. Expected: &lt;2&gt; but was: &lt;0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: mock:orders Received message count. Expected: &lt;2&gt; but was: &lt;0&gt;
+	at org.apache.camel.component.mock.MockEndpoint.fail(MockEndpoint.java:731)
+	at org.apache.camel.component.mock.MockEndpoint.assertEquals(MockEndpoint.java:713)
+	at org.apache.camel.component.mock.MockEndpoint.assertIsSatisfied(MockEndpoint.java:237)
+	at org.apache.camel.component.mock.MockEndpoint.assertIsSatisfied(MockEndpoint.java:215)
+	at org.fusesource.camel.PlaceOrderTest.testPlacingOrders(PlaceOrderTest.java:44)
+</error>
+    <system-out>@HL
+@HL-------------------------------------------------------
+@HL T E S T S
+@HL-------------------------------------------------------
+@SLRunning org.fusesource.camel.PlaceOrderTest
+[                          main] DefaultCamelContext            INFO  JMX enabled. Using InstrumentationLifecycleStrategy.
+[                          main] BrokerService                  INFO  Using Persistence Adapter: MemoryPersistenceAdapter
+[                          main] BrokerService                  INFO  ActiveMQ 5.2.0 JMS Message Broker (localhost) is starting
+[                          main] BrokerService                  INFO  For help or more information please see: http://activemq.apache.org/
+[                          main] TransportServerThreadSupport   INFO  Listening for connections at: tcp://MA-LT6255:61616
+[                          main] TransportConnector             INFO  Connector tcp://localhost:61616 Started
+[                          main] BrokerService                  INFO  ActiveMQ JMS Message Broker (localhost, ID:MA-LT6255-52646-1317819394137-0:0) started
+[                          main] DefaultCamelContext            INFO  Apache Camel 1.6.0 (CamelContext:camelContext) is starting
+[                          main] ChoiceType                     WARN  No otherwise clause was specified for a choice block -- any unmatched exchanges will be dropped
+[                          main] DefaultCamelContext            INFO  Apache Camel 1.6.0 (CamelContext:camelContext) started
+[                          main] MockEndpoint                   INFO  Asserting: Endpoint[mock:orders] is satisfied
+</system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,57 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 7.0//EN" "http://www.bea.com/servers/wls700/dtd/weblogic700-web-jar.dtd">
+
+<weblogic-web-app>
+
+
+  <reference-descriptor>
+  </reference-descriptor>
+
+  <session-descriptor>
+    <session-param>
+      <param-name>URLRewritingEnabled</param-name>
+      <param-value>true</param-value>
+    </session-param>
+    <session-param>
+      <param-name>InvalidationIntervalSecs</param-name>
+      <param-value>60</param-value>
+    </session-param>
+    <session-param>
+      <param-name>PersistentStoreType</param-name>
+      <param-value>memory</param-value>
+    </session-param>
+    <session-param>
+      <param-name>TimeoutSecs</param-name>
+      <param-value>3600</param-value>
+    </session-param>
+  </session-descriptor>
+
+  <jsp-descriptor>
+    <jsp-param>
+      <param-name>compileCommand</param-name>
+      <param-value>javac</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>precompile</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>workingDir</param-name>
+      <param-value>C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>keepgenerated</param-name>
+      <param-value>false</param-value>
+    </jsp-param>
+    <jsp-param>
+      <param-name>pageCheckSeconds</param-name>
+      <param-value>5</param-value>
+    </jsp-param>
+  </jsp-descriptor>
+
+
+  <charset-params>
+  </charset-params>
+
+
+</weblogic-web-app>
+

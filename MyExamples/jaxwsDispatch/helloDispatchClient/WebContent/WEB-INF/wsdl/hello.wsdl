@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/services/HelloWorld" xmlns:types="http://www.example.com/schemas/HelloWorld" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HelloWorldService" targetNamespace="http://www.example.com/services/HelloWorld">
+
+   <types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/schemas/HelloWorld">
+
+		<element name="hello">
+			<complexType>
+				<sequence>
+					<element name="message" type="string"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<element name="helloResponse">
+			<complexType>
+				<sequence>
+					<element name="message" type="string"/>
+				</sequence>
+			</complexType>
+		</element>
+	</schema>
+   </types>
+
+   <message name="HelloRequest">
+      <part element="types:hello" name="firstName"/>
+   </message>
+
+   <message name="HelloResponse">
+      <part element="types:helloResponse" name="greeting"/>
+   </message>
+
+   <portType name="HelloWorldSEI">
+      <operation name="hello">
+         <input message="tns:HelloRequest"/>
+         <output message="tns:HelloResponse"/>
+      </operation>
+   </portType>
+   
+   <binding name="HelloSoap11Binding" type="tns:HelloWorldSEI">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="hello">
+         <soap:operation soapAction="hello"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+   </binding>
+
+   <service name="HelloService">
+      <port binding="tns:HelloSoap11Binding" name="HelloPort">
+         <soap:address location="http://wsx3:9080/hello/HelloService"/>
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,20 @@
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB//EN' 'http://www.bea.com/servers/wls700/dtd/weblogic700-ejb-jar.dtd'>
+
+
+<!-- Generated XML! -->
+
+<weblogic-ejb-jar>
+  <weblogic-enterprise-bean>
+    <ejb-name>MyMessageBean</ejb-name>
+    <message-driven-descriptor>
+      <pool>
+      </pool>
+
+      <destination-jndi-name>MyJMSQueue</destination-jndi-name>
+    </message-driven-descriptor>
+
+    <transaction-descriptor>
+    </transaction-descriptor>
+
+  </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

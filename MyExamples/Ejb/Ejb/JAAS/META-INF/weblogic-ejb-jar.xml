@@ -1,0 +1,20 @@
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB//EN' 'http://www.bea.com/servers/wls700/dtd/weblogic700-ejb-jar.dtd'>
+<!-- Generated XML! -->
+<weblogic-ejb-jar>
+	<weblogic-enterprise-bean>
+		<ejb-name>HelloBean</ejb-name>
+		<stateless-session-descriptor>
+			<pool/>
+			<stateless-clustering/>
+		</stateless-session-descriptor>
+		<transaction-descriptor/>
+		<jndi-name>HelloBean</jndi-name>
+	</weblogic-enterprise-bean>
+
+	<security-role-assignment>
+		<role-name>myrole</role-name>
+		<principal-name>userabc</principal-name>
+		<principal-name>userpqr</principal-name>
+	</security-role-assignment>
+	
+</weblogic-ejb-jar>

@@ -1,0 +1,17 @@
+
+
+create table inventory
+(
+	id int primary key,
+	qty int
+)
+
+insert into inventory values(101,5)
+insert into inventory values(103,7)
+----------------------------------------------
+
+create table purchase
+(
+	id int,
+	qty int
+)

@@ -1,0 +1,105 @@
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+
+<!-- Generated XML! -->
+
+<ejb-jar>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>EmployeeBean</ejb-name>
+      <local-home>emp.EmployeeHome</local-home>
+      <local>emp.Employee</local>
+      <ejb-class>emp.EmployeeBean</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <abstract-schema-name>EmployeeBean</abstract-schema-name>
+      <cmp-field>
+        <field-name>dBDeptno</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>dBEmpno</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>dBEmpname</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>dBSal</field-name>
+      </cmp-field>
+      <primkey-field>dBEmpno</primkey-field>
+    </entity>
+    <entity>
+      <ejb-name>DepartmentBean</ejb-name>
+      <home>emp.DepartmentHome</home>
+      <remote>emp.Department</remote>
+      <ejb-class>emp.DepartmentBean</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <abstract-schema-name>DepartmentBean</abstract-schema-name>
+      <cmp-field>
+        <field-name>dBDeptname</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>dBDeptno</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>dBLocation</field-name>
+      </cmp-field>
+      <primkey-field>dBDeptno</primkey-field>
+      <ejb-local-ref>
+        <ejb-ref-name>ejb/employee</ejb-ref-name>
+        <ejb-ref-type>Entity</ejb-ref-type>
+        <local-home>emp.EmployeeHome</local-home>
+        <local>emp.Employee</local>
+        <ejb-link>EmployeeBean</ejb-link>
+      </ejb-local-ref>
+      <query>
+        <query-method>
+          <method-name>ejbSelectAllEmployeesByName</method-name>
+          <method-params>
+            <method-param>int</method-param>
+            <method-param>java.lang.String</method-param>
+          </method-params>
+
+        </query-method>
+
+        <result-type-mapping>Local</result-type-mapping>
+        <!--<ejb-ql><![CDATA[SELECT OBJECT(e) FROM DepartmentBean AS o,IN (o.dBEmployee) e where e.dBDeptno= ?1]]></ejb-ql>-->
+		<ejb-ql><![CDATA[SELECT e FROM DepartmentBean AS o,e IN o.dBEmployee WHERE e.dBDeptno = ?1]]></ejb-ql>
+      </query>
+    </entity>
+  </enterprise-beans>
+
+  <relationships>
+    <ejb-relation>
+      <ejb-relation-name>dept-emp</ejb-relation-name>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>emp-belongs-to-dept</ejb-relationship-role-name>
+        <multiplicity>many</multiplicity>
+        <cascade-delete/>
+        <relationship-role-source>
+          <ejb-name>EmployeeBean</ejb-name>
+        </relationship-role-source>
+
+      </ejb-relationship-role>
+      <ejb-relationship-role>
+        <ejb-relationship-role-name>dept-has-emp</ejb-relationship-role-name>
+        <multiplicity>one</multiplicity>
+                <relationship-role-source>
+          <ejb-name>DepartmentBean</ejb-name>
+        </relationship-role-source>
+
+        <cmr-field>
+          <cmr-field-name>dBEmployee</cmr-field-name>
+          <cmr-field-type>java.util.Set</cmr-field-type>
+        </cmr-field>
+
+      </ejb-relationship-role>
+    </ejb-relation>
+  </relationships>
+
+  <assembly-descriptor>
+  </assembly-descriptor>
+
+</ejb-jar>

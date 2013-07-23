@@ -1,0 +1,14 @@
+Service successfully added!
+ 
+Project Department Deccansoft 
+
+Business key ddeaa737-b928-498b-a7a4-adb0c6aa64f0 
+
+Service name HelloBeanService 
+Service key 8b2a8f0e-42b7-4d0c-abda-aaf684fc37a5 
+
+WSDL link http://localhost:7001/WebServices/HelloBeanService?WSDL 
+
+Service description 
+This service exposes an EJB as Web Service 
+

@@ -1,0 +1,23 @@
+<web-services xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<web-service name="web-services" 	                     targetNamespace="http://www.deccansoft.com" 	                     uri="/JMSTestService">
+
+		<components>
+			<jms-send-destination name="inqueue" 
+				       connection-factory="weblogic.jms.ConnectionFactory">
+
+				<jndi-name path="MyJMSQueue"/>
+
+			</jms-send-destination>
+		</components>
+		
+		<operations xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<operation invocation-style="one-way" name="submit" 	                       component="inqueue">
+	                       
+	      	<params>
+					<param name="s" type="xsd:string" style="IN"/>
+				</params>
+                 
+	       </operation>
+		</operations>
+	</web-service>
+</web-services>

@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+function OnNewClicked()
+{
+	document.form1.add.disabled=false;
+	document.form1.empName.disabled=false;
+	document.form1.empSal.disabled=false;
+	document.form1.empID.disabled=true;
+	document.form1.findemp.disabled=true;
+	document.form1.delemp.disabled=true;
+	document.form1.showall.disabled=true;
+}
+function OnFindClicked()
+{
+	document.form1.add.disabled=true;
+	document.form1.empName.disabled=true;
+	document.form1.empSal.disabled=true;
+	document.form1.empID.disabled=false;
+	document.form1.findemp.disabled=false;
+	document.form1.delemp.disabled=false;
+	document.form1.showall.disabled=false;
+}
+function validateEmpName()
+{
+	var value = document.form1.empName.value;
+	if(value=="")
+	{ 
+		alert("Field should not be empty");
+		document.form1.empName.focus();
+		document.form1.empName.select();
+		return false;
+	}
+	else if(!isNaN(value))
+	{
+		alert("Numbers not alowed");
+		document.form1.empName.focus();
+		document.form1.empName.select();
+		return false;
+	}
+	return true;
+}
+function validateEmpSal()
+{
+    var value = document.form1.empSal.value;
+	if(value=="") 
+	{
+		alert("Field should not be empty");
+		document.form1.empSal.focus();
+		document.form1.empSal.select();
+		return false;
+	}
+	else if(isNaN(value))
+	{
+		alert(" Only Numbers alowed");
+		document.form1.empSal.focus();
+		document.form1.empSal.select();
+		return false;
+	}
+	return true;
+}
+function validateEmpID()
+{
+    var value = document.form1.empID.value;
+	if(value=="") 
+	{
+		alert("Field should not be empty");
+		document.form1.empID.focus();
+		document.form1.empID.select();
+		return false;
+	}
+	else if(isNaN(value))
+	{
+		alert(" Only Numbers alowed");
+		document.form1.empID.focus();
+		document.form1.empID.select();
+		return false;
+	}
+	return true;
+}
+function OnFormSubmit(a)
+{
+	if(document.form1.en.checked)
+	{
+		if((!validateEmpName()) || (!validateEmpSal()))
+		return
+	}
+	else if(document.form1.fd.checked)
+	{
+		if(!validateEmpID())
+		return
+	}
+	document.form1.sub.value = a;
+	document.form1.submit();
+}
+</script>
+</head>
+<body>
+<form action="jspclient.jsp" method="post" name="form1" target="f2">
+  <table width="41%" border="0">
+    <tr> 
+      <td height="0" colspan="2">
+		<table width="223">
+          <tr> 
+            <td width="112"> <label> 
+              <input type="radio" name="Option" id="en" value="New" checked onClick="OnNewClicked()">
+              New</label></td>
+            <td width="99"> <input type="radio" name="Option" id="fd" value="Find/Delete" onClick="OnFindClicked()">
+              Find/Delete</td>
+          </tr>
+        </table> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="36%">EmpName</td>
+      <td width="64%"><input type="text" name="empName" value=""></td>
+    </tr>
+    <tr> 
+      <td>EmpID</td>
+      <td><input type="text" name="empID" value="" disabled ></td>
+    </tr>
+    <tr> 
+      <td>EmpSal</td>
+      <td><input type="text" name="empSal" value=""></td>
+    </tr>
+    <tr> 
+      <td><input type="button" name="csub" id="add" value="Add" onClick="OnFormSubmit(this.value)"></td>
+      <td><input type="button" name="csub" id="delemp" value="Delete" onClick="OnFormSubmit(this.value)" disabled></td>
+    </tr>
+    <tr> 
+      <td><input type="button" name="csub" id="findemp" value="Find" onClick="OnFormSubmit(this.value)" disabled></td>
+      <td><input type="button" name="csub" id="showall" value="ShowAll" onClick="OnFormSubmit(this.value)"> </td>
+    </tr>
+  </table>
+  <input type='hidden' name='sub' value = ''/>
+</form>
+</body>
+</html>

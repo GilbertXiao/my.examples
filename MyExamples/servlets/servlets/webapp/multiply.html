@@ -1,0 +1,50 @@
+
+<!-- 
+	This html page represents a form which contain
+	2 EditBox for entering the number for multiplication.
+	1 Submit button for submitting the form to MultiplyServlet.
+-->
+<html>
+	<head>
+		<script language="javascript">
+		// myFormSubmit function provide validation for number formate.
+		function myFormSubmit()
+		{
+			var str = document.myForm.n1.value;
+			if(isNaN(str))
+			{
+				alert("Only number allowed");
+				document.myForm.n1.focus();
+				document.myForm.n1.select();
+				return false;
+			}
+			str = document.myForm.n2.value;
+			if(isNaN(str))
+			{
+				alert("Only number allowed");
+				document.myForm.n2.focus();
+				document.myForm.n2.select();
+				return false;
+			}
+			return true;
+		}
+
+		</script>
+	</head>
+	<body>
+		<h1>
+			<form action="/myapp/multiply" 
+			      name = "myForm" method="post" 
+						onSubmit="return myFormSubmit()">
+				Enter a number : 
+				<input type="text" name="n1" value="">
+				<br>
+				Enter a number : 
+				<input type="text" name="n2" value="">
+				<br><br>
+				<input type="submit" 
+				       name="submit" value="Multiply">
+			</form>
+		</h1>
+	</body>
+</html>

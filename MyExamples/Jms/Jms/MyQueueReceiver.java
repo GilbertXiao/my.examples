@@ -1,0 +1,70 @@
+import java.util.*;
+import javax.jms.*;
+import javax.naming.*;
+
+public class MyQueueReceiver
+{
+	public static void main(String args[])
+	throws Exception
+	{
+		String jndi_name =
+			"weblogic.jndi.WLInitialContextFactory";
+
+		String factory_name =
+			"weblogic.jms.ConnectionFactory";
+
+		String queue_name = "MyJMSQueueJNDI";
+
+Properties p = new Properties();
+p.put(Context.INITIAL_CONTEXT_FACTORY,jndi_name);
+
+		Context ctx = new InitialContext(p);
+
+		Object obj = ctx.lookup(factory_name);
+
+		QueueConnectionFactory cf =
+						(QueueConnectionFactory)obj;
+
+		QueueConnection conn = 
+					cf.createQueueConnection();
+
+		conn.start();
+
+		QueueSession session =
+			conn.createQueueSession
+			 (false,QueueSession.AUTO_ACKNOWLEDGE);
+
+		Queue q = (Queue)ctx.lookup(queue_name);
+
+		String filter1 = "JMSPriority >= 6";
+		String filter2 = "category='sports'";
+
+		String ORfilter = 
+			"JMSPriority >= 6 OR category='sports'";
+
+		QueueReceiver receiver = 
+			session.createReceiver(q);
+
+		boolean z = true;
+		while(z)
+		{
+			Message msg = receiver.receive(5000);
+			if(msg != null)
+			{
+				if(msg instanceof TextMessage)
+				{
+					TextMessage txtMsg = (TextMessage)msg;
+					System.out.println(txtMsg.getText());
+				}
+				else 
+					System.out.println
+						("Message Received in Unknown format");
+			}
+			else 
+				System.out.println("Not Available");
+		}
+
+		session.close();
+		conn.close();
+	}
+}

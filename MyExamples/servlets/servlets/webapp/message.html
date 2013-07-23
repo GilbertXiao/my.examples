@@ -1,0 +1,46 @@
+<!-- 
+	This represents a form which contain following controls
+	TextArea  for typing a message.
+	CheckBox for desiding whether message should be in bold or normal style.
+	Radio for selecting a color in which message should display in MessageServlet.
+-->
+<html>
+	<body>
+		<h1>
+			<form action="message" method="post">
+				Enter your Message: <br><br>
+				<textarea name="msg" 
+									rows="8" cols="30"></textarea>
+
+				<br>
+				<input type="checkbox" 
+							 name="bold" value="bold">Bold
+
+				<input type="radio" 
+					 name="mycolor" value="red"> Red
+
+				<input type="radio" 
+					 name="mycolor" value="green"> Green
+				
+	<input type="radio" 
+				 name="mycolor" value="blue"> Blue
+
+	<input type = "hidden" name="a" value = "b">
+	
+	<select name="myheader" size="4" multiple>
+			<option value = "h1"> H1
+			<option value = "h2"> H2
+			<option value = "h3"> H3
+			<option value = "h4"> H4
+			<option value = "h5"> H5
+			<option value = "h6"> H6
+		</select>
+
+				<br>
+				
+				<input type="submit" 
+							 name="submit" value="Send">
+			</form>
+		</h1>
+	</body>
+</html>

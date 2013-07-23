@@ -1,0 +1,10 @@
+<project name="myname" default="generate-client">
+
+	<target name="generate-client">
+	
+		<clientgen wsdl="JMSTestService.wsdl" 
+								packageName="wsdemo" clientJar="myclient.jar"/>
+								
+	</target>
+	
+</project>

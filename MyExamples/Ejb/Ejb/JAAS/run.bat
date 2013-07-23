@@ -1,0 +1,1 @@
+java -Djava.security.auth.login.config==sample_jaas.config examples.security.jaas.SampleClient

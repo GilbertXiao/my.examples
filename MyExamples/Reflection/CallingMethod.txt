@@ -1,0 +1,22 @@
+import java.lang.reflect.*;
+
+public class CallingMethod {
+ public static void main(String[] args) {
+  String firstName= new String("Deepak");
+  String lastName=new String("Kumar");
+  String result =  new String("");
+  Class cls = String.class;
+  Class[] parametertype = new Class[] {String.class};
+  Object[] arguments = new Object[] {lastName};
+  try {
+ Method concatMethod = 
+   cls.getMethod("concat", parametertype);
+ result = (String)
+   concatMethod.invoke(firstName,arguments);
+   System.out.println(" Concatenated String is =>
+   "+result);
+   }catch (Exception e) {
+ System.out.println(e);
+   }
+ }
+}

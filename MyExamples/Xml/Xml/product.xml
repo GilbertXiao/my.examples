@@ -1,0 +1,6 @@
+
+<product name="JDBC Driver">
+	<vendor name="A" price="111.0"></vendor>
+	<vendor name="B" price="102.5"/>
+	<vendor name="C" price="112.0"/>
+</product>

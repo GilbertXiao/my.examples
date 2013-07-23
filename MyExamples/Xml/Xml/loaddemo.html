@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script>	
+		
+function b1_onclick()
+{
+	var libraryDoc = 
+		new ActiveXObject("microsoft.xmldom");
+
+	libraryDoc.load("C:\\ejb\\xml\\library.xml");
+	
+	alert
+		(libraryDoc.documentElement.xml);
+
+}
+	
+
+		</script>	
+	</head>
+
+	<body>
+		<form>
+			<input type='button' name='b1' 
+							value = 'Click' 
+							onclick = 'b1_onclick()'> 
+		</form>
+	</body>
+
+</html>

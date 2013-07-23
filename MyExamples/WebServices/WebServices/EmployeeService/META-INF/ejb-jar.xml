@@ -1,0 +1,54 @@
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+<!-- Generated XML! -->
+<ejb-jar>
+	<enterprise-beans>
+		<session>
+			<ejb-name>EmployeeServiceBean</ejb-name>
+			<home>emp.EmployeeServiceHome</home>
+			<remote>emp.EmployeeService</remote>
+			<ejb-class>emp.EmployeeServiceBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+			<ejb-ref>
+				<ejb-ref-name>ejb/employee</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>emp.EmployeeHome</home>
+				<remote>emp.Employee</remote>
+				<ejb-link>EmployeeBean</ejb-link>
+			</ejb-ref>
+		</session>
+		<entity>
+			<ejb-name>EmployeeBean</ejb-name>
+			<home>emp.EmployeeHome</home>
+			<remote>emp.Employee</remote>
+			<ejb-class>emp.EmployeeBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>java.lang.Integer</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field>
+				<field-name>dBEmpno</field-name>
+			</cmp-field>
+			<cmp-field>
+				<field-name>dBEname</field-name>
+			</cmp-field>
+			<cmp-field>
+				<field-name>dBSal</field-name>
+			</cmp-field>
+			<primkey-field>dBEmpno</primkey-field>
+		</entity>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<security-role>
+			<role-name>myrole</role-name>
+		</security-role>
+
+		<method-permission>
+			<role-name>myrole</role-name>
+			<method>
+				<ejb-name>EmployeeServiceBean</ejb-name>
+				<method-name>*</method-name>
+			</method>
+		</method-permission>	
+	
+	</assembly-descriptor>
+</ejb-jar>

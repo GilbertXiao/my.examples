@@ -1,0 +1,10 @@
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>demo</shortname>
+	<tag>
+		<name>welcome</name>
+		<tagclass>pack.WelcomeTag</tagclass>
+		<bodyContent>EMPTY</bodyContent>
+	</tag>
+</taglib>

@@ -1,0 +1,49 @@
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+<!-- Generated XML! -->
+<ejb-jar>
+	<enterprise-beans>
+		<entity>
+			<ejb-name>EmployeeBean</ejb-name>
+			<home>emp.EmployeeHome</home>
+			<remote>emp.Employee</remote>
+			<ejb-class>emp.EmployeeBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>java.lang.Integer</prim-key-class>
+			<reentrant>False</reentrant>
+			<abstract-schema-name>EmployeeBean</abstract-schema-name>
+			<cmp-field>
+				<field-name>dBEmpno</field-name>
+			</cmp-field>
+			<cmp-field>
+				<field-name>dBEname</field-name>
+			</cmp-field>
+			<cmp-field>
+				<field-name>dBSal</field-name>
+			</cmp-field>
+			<primkey-field>dBEmpno</primkey-field>
+			<query>
+				<query-method>
+					<method-name>findBySalary</method-name>
+					<method-params>
+						<method-param>float</method-param>
+					</method-params>
+				</query-method>
+				<result-type-mapping>Local</result-type-mapping>
+				<ejb-ql><![CDATA[SELECT OBJECT(o) FROM EmployeeBean AS o WHERE o.dBSal <= ?1]]></ejb-ql>
+			</query>
+
+			<query>
+				<query-method>
+					<method-name>findByName</method-name>
+					<method-params>
+						<method-param>java.lang.String</method-param>
+					</method-params>
+				</query-method>
+				<result-type-mapping>Local</result-type-mapping>
+				<ejb-ql><![CDATA[SELECT OBJECT(o) FROM EmployeeBean AS o WHERE o.dBEname LIKE CONCAT('%',CONCAT(?1,'%'))]]></ejb-ql>
+			</query>
+
+		</entity>
+	</enterprise-beans>
+	<assembly-descriptor/>
+</ejb-jar>

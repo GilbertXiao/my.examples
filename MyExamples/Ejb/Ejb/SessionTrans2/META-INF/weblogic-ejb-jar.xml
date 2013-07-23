@@ -1,0 +1,55 @@
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB//EN' 'http://www.bea.com/servers/wls700/dtd/weblogic700-ejb-jar.dtd'>
+
+
+<!-- Generated XML! -->
+
+<weblogic-ejb-jar>
+  <weblogic-enterprise-bean>
+    <ejb-name>InventoryBean</ejb-name>
+    <stateless-session-descriptor>
+      <pool>
+      </pool>
+
+      <stateless-clustering>
+      </stateless-clustering>
+
+    </stateless-session-descriptor>
+
+    <transaction-descriptor>
+    </transaction-descriptor>
+
+    <local-jndi-name>InventoryBean</local-jndi-name>
+  </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>RootBean</ejb-name>
+    <stateless-session-descriptor>
+      <pool>
+      </pool>
+
+      <stateless-clustering>
+      </stateless-clustering>
+
+    </stateless-session-descriptor>
+
+    <transaction-descriptor>
+    </transaction-descriptor>
+
+    <jndi-name>RootBean</jndi-name>
+  </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>PurchaseBean</ejb-name>
+    <stateless-session-descriptor>
+      <pool>
+      </pool>
+
+      <stateless-clustering>
+      </stateless-clustering>
+
+    </stateless-session-descriptor>
+
+    <transaction-descriptor>
+    </transaction-descriptor>
+
+    <jndi-name>PurchaseBean</jndi-name>
+  </weblogic-enterprise-bean>
+</weblogic-ejb-jar>

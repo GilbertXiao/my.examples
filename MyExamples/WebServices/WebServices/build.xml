@@ -1,0 +1,9 @@
+<project name="buildWebservice" default="ear">
+	<target name="ear">
+		<servicegen destEar="HelloWorld.ear" 															  contextURI="WebServices">
+			<service javaClassComponents="demo.HelloImpl" 										 targetNamespace="http://www.deccansoft.com" 								serviceName="HelloWorld" 													serviceURI="/HelloWorld" generateTypes="True" 								expandMethods="True">
+				<client packageName="wsdemo"/>
+			</service>
+		</servicegen>
+	</target>
+</project>

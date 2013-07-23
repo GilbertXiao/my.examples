@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: org.fusesource.camel.PlaceOrderTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 22.169 sec <<< FAILURE!
+testPlacingOrders(org.fusesource.camel.PlaceOrderTest)  Time elapsed: 22.064 sec  <<< ERROR!
+java.lang.AssertionError: mock:orders Received message count. Expected: <2> but was: <0>
+	at org.apache.camel.component.mock.MockEndpoint.fail(MockEndpoint.java:731)
+	at org.apache.camel.component.mock.MockEndpoint.assertEquals(MockEndpoint.java:713)
+	at org.apache.camel.component.mock.MockEndpoint.assertIsSatisfied(MockEndpoint.java:237)
+	at org.apache.camel.component.mock.MockEndpoint.assertIsSatisfied(MockEndpoint.java:215)
+	at org.fusesource.camel.PlaceOrderTest.testPlacingOrders(PlaceOrderTest.java:44)
+

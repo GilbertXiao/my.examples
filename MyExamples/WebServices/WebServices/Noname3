@@ -1,0 +1,46 @@
+
+publish API
+-----------
+
+save_business()
+save_service ()
+save_binding ()
+save_tmodel  ()
+
+set_publisherAssertion()
+
+delete_business()
+delete_service ()
+delete_binding ()
+delete_tmodel  ()
+
+get_authToken()    // returns authInfo
+get_registeredInfo // 
+
+
+Inquiry API
+-----------
+
+browser pattern
+	find_business()
+	find_service ()
+	find_binding ()
+
+drill down pattern(UUID Key is para)
+
+	get_businessDetail()
+	get_serviceDetail ()
+	get_bindingDetail ()
+	get_tModelDetail  ()
+	get_businessDetailExt()
+
+
+
+
+
+
+
+
+
+
+

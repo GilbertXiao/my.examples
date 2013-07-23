@@ -1,0 +1,224 @@
+The control file is ulcase5.ctl.
+
+  -- Loads EMP records from first 23 characters
+   -- Creates and loads PROJ records for each PROJNO listed
+   -- for each employee
+   LOAD DATA
+   INFILE 'ulcase5.dat'
+   BADFILE 'ulcase5.bad'
+   DISCARDFILE 'ulcase5.dsc'
+1)   REPLACE
+2)    INTO TABLE emp
+   (empno   POSITION(1:4)     INTEGER EXTERNAL,
+   ename    POSITION(6:15)    CHAR,
+   deptno   POSITION(17:18)   CHAR,
+   mgr      POSITION(20:23)   INTEGER EXTERNAL)
+2)   INTO TABLE proj
+   -- PROJ has two columns, both not null: EMPNO and PROJNO
+3)   WHEN projno != '   '
+   (empno   POSITION(1:4)     INTEGER EXTERNAL,
+3)   projno   POSITION(25:27)   INTEGER EXTERNAL)   -- 1st proj
+2)   INTO TABLE proj
+4)   WHEN projno != '   '
+   (empno   POSITION(1:4)     INTEGER EXTERNAL,
+4)   projno   POSITION(29:31    INTEGER EXTERNAL)   -- 2nd proj
+
+2)   INTO TABLE proj
+5)   WHEN projno != '   '
+   (empno   POSITION(1:4)    INTEGER EXTERNAL,
+5)  projno  POSITION(33:35)  INTEGER EXTERNAL)   -- 3rd proj 
+
+
+Notes:
+
+REPLACE specifies that if there is data in the tables to be loaded (emp and proj), SQL*loader should delete the data before loading new rows. 
+Multiple INTO TABLE clauses load two tables, emp and proj. The same set of records is processed three times, using different combinations of columns each time to load table proj. 
+WHEN loads only rows with nonblank project numbers. When projno is defined as columns 25...27, rows are inserted into proj only if there is a value in those columns. 
+When projno is defined as columns 29...31, rows are inserted into proj only if there is a value in those columns. 
+When projno is defined as columns 33...35, rows are inserted into proj only if there is a value in those columns. 
+Datafile for Case Study 5
+1234 BAKER      10 9999 101 102 103
+1234 JOKER      10 9999 777 888 999
+2664 YOUNG      20 2893 425 abc 102
+5321 OTOOLE     10 9999 321  55  40
+2134 FARMER     20 4555 236 456    
+2414 LITTLE     20 5634 236 456  40
+6542 LEE        10 4532 102 321  14
+2849 EDDS       xx 4555     294  40
+4532 PERKINS    10 9999  40        
+1244 HUNT       11 3452 665 133 456
+123  DOOLITTLE  12 9940         132
+1453 MACDONALD  25 5532     200    
+
+Running Case Study 5
+Take the following steps to run the case study.
+
+Start SQL*Plus as scott/tiger by entering the following at the system prompt: 
+sqlplus scott/tiger
+
+
+The SQL prompt is displayed.
+
+At the SQL prompt, execute the SQL script for this case study, as follows: 
+SQL> @ulcase5
+
+
+This prepares and populates tables for the case study and then returns you to the system prompt.
+
+At the system prompt, invoke SQL*Loader and run the case study, as follows: 
+sqlldr USERID=scott/tiger CONTROL=ulcase5.ctl LOG=ulcase5.log
+
+
+SQL*Loader loads the tables, creates the log file, and returns you to the system prompt. You can check the log file to see the results of running the case study.
+
+Log File for Case Study 5
+The following is a portion of the log file:
+
+Control File:   ulcase5.ctl
+Data File:      ulcase5.dat
+  Bad File:     ulcase5.bad
+  Discard File: ulcase5.dis 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table EMP, loaded from every logical record.
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+EMPNO                                 1:4     4           CHARACTER            
+ENAME                                6:15    10           CHARACTER            
+DEPTNO                              17:18     2           CHARACTER            
+MGR                                 20:23     4           CHARACTER            
+
+Table PROJ, loaded when PROJNO != 0X202020(character '   ')
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+EMPNO                                 1:4     4           CHARACTER            
+PROJNO                              25:27     3           CHARACTER            
+
+Table PROJ, loaded when PROJNO != 0X202020(character '   ')
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+EMPNO                                 1:4     4           CHARACTER            
+PROJNO                              29:31     3           CHARACTER            
+
+Table PROJ, loaded when PROJNO != 0X202020(character '   ')
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+EMPNO                                 1:4     4           CHARACTER            
+PROJNO                              33:35     3           CHARACTER            
+
+1) Record 2: Rejected - Error on table EMP.
+1) ORA-00001: unique constraint (SCOTT.EMPIX) violated
+
+1) Record 8: Rejected - Error on table EMP, column DEPTNO.
+1) ORA-01722: invalid number
+
+1) Record 3: Rejected - Error on table PROJ, column PROJNO.
+1) ORA-01722: invalid number
+
+
+Table EMP:
+2)  9 Rows successfully loaded.
+2)  3 Rows not loaded due to data errors.
+2)  0 Rows not loaded because all WHEN clauses were failed.
+2)  0 Rows not loaded because all fields were null.
+
+
+Table PROJ:
+3)  7 Rows successfully loaded.
+3)  2 Rows not loaded due to data errors.
+3)  3 Rows not loaded because all WHEN clauses were failed.
+3)  0 Rows not loaded because all fields were null.
+
+
+Table PROJ:
+4)  7 Rows successfully loaded.
+4)  3 Rows not loaded due to data errors.
+4)  2 Rows not loaded because all WHEN clauses were failed.
+4)  0 Rows not loaded because all fields were null.
+
+
+Table PROJ:
+5)  6 Rows successfully loaded.
+5)  3 Rows not loaded due to data errors.
+5)  3 Rows not loaded because all WHEN clauses were failed.
+5)  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                   4096 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:            12
+Total logical records rejected:         3
+Total logical records discarded:        0
+
+Run began on Wed Feb 27 14:34:33 2002
+Run ended on Wed Feb 27 14:34:34 2002
+
+Elapsed time was:     00:00:01.00
+CPU time was:         00:00:00.22    
+
+
+Notes:
+
+Errors are not encountered in the same order as the physical records due to buffering (array batch). The bad file and discard file contain records in the same order as they appear in the log file. 
+Of the 12 logical records for input, three rows were rejected (rows for joker, young, and edds). No data was loaded for any of the rejected records. 
+Of the 9 records that met the WHEN clause criteria, two (joker and young) were rejected due to data errors. 
+Of the 10 records that met the WHEN clause criteria, three (joker, young, and edds) were rejected due to data errors. 
+Of the 9 records that met the WHEN clause criteria, three (joker, young, and edds) were rejected due to data errors. 
+Loaded Tables for Case Study 5
+The following are sample SQL queries and their results:
+
+SQL> SELECT empno, ename, mgr, deptno FROM emp;
+EMPNO      ENAME           MGR           DEPTNO
+------     ------          ------        ------
+1234       BAKER           9999          10
+5321       OTOOLE          9999          10
+2134       FARMER          4555          20
+2414       LITTLE          5634          20
+6542       LEE             4532          10
+4532       PERKINS         9999          10
+1244       HUNT            3452          11
+123        DOOLITTLE       9940          12
+1453       MACDONALD       5532          25
+
+SQL> SELECT * from PROJ order by EMPNO;
+
+EMPNO              PROJNO
+------             ------
+123                132
+1234               101
+1234               103
+1234               102
+1244               665
+1244               456
+1244               133
+1453               200
+2134               236
+2134               456
+2414               236
+2414               456
+2414               40
+4532               40
+5321               321
+5321               40
+5321               55
+6542               102
+6542               14
+6542               321
+

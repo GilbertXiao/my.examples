@@ -1,0 +1,27 @@
+<web-services xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+<web-service
+name="BounceService"
+targetNamespace="http://www.foobar.com/echo"
+uri="/BounceService">
+<components>
+<jms-send-destination name="inqueue"
+connection-factory="weblogic.jms.ConnectionFactory">
+<jndi-name path="weblogic.jms.inqueue" />
+</jms-send-destination>
+<jms-receive-queue name="outqueue"
+connection-factory="weblogic.jms.ConnectionFactory">
+<jndi-name path="weblogic.jms.outqueue" />
+</jms-receive-queue>
+</components>
+<operations xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<operation invocation-style="one-way" name="submit" component="inqueue" >
+</operation>
+<operation invocation-style="request-response"
+name="query" component="outqueue" >
+<params>
+<return-param name="output_payload" type="xsd:string"/>
+</params>
+</operation>
+</operations>
+</web-service>
+</web-services>

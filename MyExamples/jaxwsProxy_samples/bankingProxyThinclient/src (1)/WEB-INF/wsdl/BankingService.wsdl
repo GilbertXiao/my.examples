@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.com/services/Banking" xmlns:types="http://www.example.com/schemas/Banking" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BankingService" targetNamespace="http://www.example.com/services/Banking">
+
+   <types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.com/schemas/Banking">
+
+		<!--
+		definition of createAccount operation request and response beans
+		-->
+		<element name="createAccount">
+			<complexType>
+				<sequence>
+					<element name="owner" type="string"/>
+				<element name="initialBalance" type="double"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<element name="createAccountResponse">
+			<complexType>
+				<sequence>
+					<element name="accountNumber" type="long"/>
+				</sequence>
+			</complexType>
+		</element>
+
+
+		<!--
+		definition of withdraw operation request, response and fault beans 
+		-->
+		<element name="withdraw">
+			<complexType>
+				<sequence>
+					<element name="accountNumber" type="long"/>
+					<element name="amount" type="double"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<element name="withdrawResponse">
+			<complexType>
+				<sequence>
+					<element name="amount" type="double"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<element name="InsufficientFunds">
+			<complexType>
+				<sequence>
+					<element name="errorMessage" type="string"/>
+					<element name="errorCode" type="int"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<!--
+		definition of getAccountInfo operation request and response beans 
+		-->
+		<element name="getAccountInfo">
+			<complexType>
+				<sequence>
+					<element name="accountNumber" type="long"/>
+				</sequence>
+			</complexType>
+		</element>
+
+		<element name="getAccountInfoResponse">
+			<complexType>
+				<sequence>
+					<element name="balance" type="double"/>
+					<element name="owner" type="string"/>
+				</sequence>
+			</complexType>
+		</element>
+	</schema>
+   </types>
+
+   <message name="createAccountRequest">
+      <part element="types:createAccount" name="request"/>
+   </message>
+
+   <message name="createAccountResponse">
+      <part element="types:createAccountResponse" name="response"/>
+   </message>
+
+   <message name="withdrawRequest">
+      <part element="types:withdraw" name="request"/>
+   </message>
+
+   <message name="withdrawResponse">
+      <part element="types:withdrawResponse" name="response"/>
+   </message>
+
+   <message name="InsufficientFunds">
+      <part element="types:InsufficientFunds" name="error"/>
+   </message>
+
+   <message name="getAccountInfoRequest">
+      <part element="types:getAccountInfo" name="request"/>
+   </message>
+
+   <message name="getAccountInfoResponse">
+      <part element="types:getAccountInfoResponse" name="response"/>
+   </message>
+
+   <portType name="BankingSEI">
+      <operation name="createAccount">
+         <input message="tns:createAccountRequest"/>
+         <output message="tns:createAccountResponse"/>
+      </operation>
+
+      <operation name="withdraw">
+         <input message="tns:withdrawRequest"/>
+         <output message="tns:withdrawResponse"/>
+	   <fault message="tns:InsufficientFunds" name="InsufficientFunds"/>
+      </operation>
+
+      <operation name="getAccountInfo">
+         <input message="tns:getAccountInfoRequest"/>
+         <output message="tns:getAccountInfoResponse"/>
+      </operation>
+   </portType>
+   
+   <binding name="BankingSoap11Binding" type="tns:BankingSEI">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <operation name="createAccount">
+         <soap:operation soapAction="createAccount"/>
+         <input>	
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+      <operation name="withdraw">
+         <soap:operation soapAction="withdraw"/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="InsufficientFunds">
+            <soap:fault name="InsufficientFunds" use="literal"/>
+         </fault>
+      </operation>
+
+      <operation name="getAccountInfo">
+         <soap:operation soapAction="getAccountInfo"/>
+         <input>	
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+      </operation>
+
+   </binding>
+
+   <service name="BankingService">
+      <port binding="tns:BankingSoap11Binding" name="AccountsPort">
+         <soap:address location="http://wsx3:9080/banking/BankingService"/>
+      </port>
+   </service>
+</definitions>

@@ -1,0 +1,8 @@
+<project name="buildWebservice" default="generate-client">
+<target name="generate-client">
+<clientgen ear="c:/myapps/myapp.ear"
+serviceName="myService"
+packageName="myapp.myservice.client"
+useServerTypes="True" />
+</target>
+</project>

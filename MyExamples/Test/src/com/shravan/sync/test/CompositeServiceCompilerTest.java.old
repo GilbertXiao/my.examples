@@ -1,0 +1,15 @@
+package com.shravan.sync.test;
+
+public class CompositeServiceCompilerTest 
+{
+	
+	public static void main(String[] args) {
+		CompositeServiceCompiler compiler = new CompositeServiceCompiler();
+		String javaCode = "class Test{"
+			+ "   public static void main (String [] args){"
+			+ "      System.out.println (\"Hello, World\");"
+			+ "      System.out.println (args.length);" + "   }" + "}";
+		String procName = "Test";
+		compiler.compile(javaCode, procName);
+	}
+}

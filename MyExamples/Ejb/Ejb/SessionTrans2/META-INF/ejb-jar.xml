@@ -1,0 +1,37 @@
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+
+<!-- Generated XML! -->
+
+<ejb-jar>
+  <enterprise-beans>
+    <session>
+      <ejb-name>InventoryBean</ejb-name>
+      <local-home>inv.InventoryHome</local-home>
+      <local>inv.Inventory</local>
+      <ejb-class>inv.InventoryBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <ejb-name>RootBean</ejb-name>
+      <home>use.RootHome</home>
+      <remote>use.Root</remote>
+      <ejb-class>use.RootBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <ejb-name>PurchaseBean</ejb-name>
+      <home>pur.PurchaseHome</home>
+      <remote>pur.Purchase</remote>
+      <ejb-class>pur.PurchaseBean</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+  </enterprise-beans>
+
+  <assembly-descriptor>
+  </assembly-descriptor>
+
+</ejb-jar>

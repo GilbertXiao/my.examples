@@ -1,0 +1,14 @@
+<!DOCTYPE weblogic-ejb-jar PUBLIC '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB//EN' 'http://www.bea.com/servers/wls700/dtd/weblogic700-ejb-jar.dtd'>
+<!-- Generated XML! -->
+<weblogic-ejb-jar>
+	<weblogic-enterprise-bean>
+		<ejb-name>HelloBean</ejb-name>
+		<jndi-name>HelloBean</jndi-name>
+	</weblogic-enterprise-bean>
+
+	<security-role-assignment>
+		<role-name>myrole</role-name>
+		<principal-name>mygroup</principal-name>
+	</security-role-assignment>
+	
+</weblogic-ejb-jar>

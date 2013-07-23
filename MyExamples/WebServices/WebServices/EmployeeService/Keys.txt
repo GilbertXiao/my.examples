@@ -1,0 +1,33 @@
+uuid:1492d326-082b-40b8-9605-af378e7c8180
+
+
+Project Department Deccansoft 
+Business key baa2f643-4ac3-4eea-98df-1d13c2947940 
+Service name EmployeeService 
+Service key 88c3ad8d-e463-4201-a273-297c72fe2b57 
+WSDL link http://localhost:7001/WebServices/EmployeeService?WSDL 
+Service description EmployeeService provides means of creating / accessing Employee details 
+
+--------------------------------------------
+
+    BEA WebLogic Server 7.0          
+    UDDI Directory Explorer            
+  
+Service Detail 
+EmployeeService - 88c3ad8d-e463-4201-a273-297c72fe2b57
+EmployeeService provides means of creating / accessing Employee details
+ 
+Bindings 
+This details the specific access points for this service instance and allows display of additional instance specific details.
+
+Overview URL Description Binding Key Instance Details 
+http://localhost:7001/WebServices/EmployeeService?WSDL
+  7dd17c52-4ff5-4a0d-afdf-207edf31196c   
+ 
+Service classifications 
+Classifications are pieces of data that classify the field of operation of a business or a service e.g. a geographic location or an industry sector. These enable users of the registry to confirm the relevance of a particular entry.
+
+Classification Name Value 
+ 
+
+

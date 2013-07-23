@@ -1,0 +1,43 @@
+<!DOCTYPE ejb-jar PUBLIC '-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 2.0//EN' 'http://java.sun.com/dtd/ejb-jar_2_0.dtd'>
+
+
+<!-- Generated XML! -->
+
+<ejb-jar>
+  <enterprise-beans>
+    <entity>
+      <ejb-name>EmployeeBean</ejb-name>
+      <home>emp.EmployeeHome</home>
+      <remote>emp.Employee</remote>
+      <ejb-class>emp.EmployeeBean</ejb-class>
+      <persistence-type>Container</persistence-type>
+      <prim-key-class>java.lang.Integer</prim-key-class>
+      <reentrant>False</reentrant>
+      <abstract-schema-name>EmployeeBean</abstract-schema-name>
+      <cmp-field>
+        <field-name>employeeID</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>employeeName</field-name>
+      </cmp-field>
+      <cmp-field>
+        <field-name>employeeSalary</field-name>
+      </cmp-field>
+      <primkey-field>employeeID</primkey-field>
+      <query>
+        <query-method>
+          <method-name>findByAllPrimaryKey</method-name>
+          <method-params>
+          </method-params>
+
+        </query-method>
+
+        <ejb-ql><![CDATA[SELECT OBJECT(o) FROM EmployeeBean AS o]]></ejb-ql>
+      </query>
+    </entity>
+  </enterprise-beans>
+
+  <assembly-descriptor>
+  </assembly-descriptor>
+
+</ejb-jar>

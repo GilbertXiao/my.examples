@@ -1,0 +1,41 @@
+<!DOCTYPE weblogic-rdbms-jar PUBLIC  '-//BEA Systems, Inc.//DTD WebLogic 7.0.0 EJB RDBMS Persistence//EN' 'http://www.bea.com/servers/wls700/dtd/weblogic-rdbms20-persistence-700.dtd'>
+
+
+<!-- Generated XML! -->
+
+<weblogic-rdbms-jar>
+  <weblogic-rdbms-bean>
+    <ejb-name>EmployeeBean</ejb-name>
+    <data-source-name>MyDataSource</data-source-name>
+    <table-map>
+      <table-name>emp</table-name>
+      <field-map>
+        <cmp-field>employeeID</cmp-field>
+        <dbms-column>empid</dbms-column>
+      </field-map>
+      <field-map>
+        <cmp-field>employeeSalary</cmp-field>
+        <dbms-column>sal</dbms-column>
+      </field-map>
+      <field-map>
+        <cmp-field>employeeName</cmp-field>
+        <dbms-column>ename</dbms-column>
+      </field-map>
+    </table-map>
+    <weblogic-query>
+      <query-method>
+        <method-name>findByAllPrimaryKey</method-name>
+        <method-params>
+        </method-params>
+
+      </query-method>
+
+    </weblogic-query>
+    <automatic-key-generation>
+      <generator-type>SQL_SERVER</generator-type>
+      <key-cache-size>0</key-cache-size>
+    </automatic-key-generation>
+
+  </weblogic-rdbms-bean>
+  <create-default-dbms-tables>True</create-default-dbms-tables>
+</weblogic-rdbms-jar>
