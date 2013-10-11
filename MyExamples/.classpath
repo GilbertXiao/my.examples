@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="Velocity"/>
 	<classpathentry kind="src" path="Xml/Xml"/>
+	<classpathentry kind="src" path="Programming"/>
 	<classpathentry kind="lib" path="camel-example/target/surefire/surefirebooter1792632454992569859.jar"/>
 	<classpathentry kind="lib" path="camel-example/target/surefire/surefirebooter8886448385016463869.jar"/>
 	<classpathentry kind="lib" path="jaxwsDispatch/helloDispatchClient/WebContent/WEB-INF/lib/gstcutils.jar"/>
@@ -79,7 +80,6 @@
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/jacorb-2.3.1.jar"/>
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/jalopy-1.5rc3.jar"/>
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/jasperreports-4.7.0.jar"/>
-	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/javalib-crypt-util-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/java-uuid-generator-3.1.3.jar"/>
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/javax.el-api-2.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/SCPP/n2013/thirdparty/compile/jaxrpc-api-1.1.jar"/>

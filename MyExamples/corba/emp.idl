@@ -1,0 +1,25 @@
+
+module emp
+{
+	struct Employee
+	{
+		long empno;
+		string ename;
+		float sal;
+	};
+
+	exception EmployeeNotFound
+	{
+		string message;
+	};
+		
+	typedef sequence<Employee>  EmployeeSeq;
+
+	interface Manager
+	{
+		Employee getEmployee(in long empid) 
+		raises (EmployeeNotFound);
+
+		EmployeeSeq  getAll();
+	};
+};
