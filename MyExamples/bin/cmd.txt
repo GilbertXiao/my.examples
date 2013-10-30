@@ -1,2 +1,0 @@
-set CL=C:\Users\stalupula\Documents\0Trash\Binaries\scpp-3.0.36-src\lib
-java -cp .;%CL%\jakarta-oro-2.0.8.jar;%CL%\velocity-1.5.jar;%CL%\commons-collections-3.2.1.jar;%cl%\commons-lang-2.5.jar com.shravan.velocity.VMMultiThreading
