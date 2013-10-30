@@ -1,0 +1,32 @@
+Hello $name!  Welcome to Velocity!
+
+the data might contain & or ! or % or ' or # etc and $name!
+
+
+<tXML>
+	<Header>
+		<Source>Manhattan</Source>
+		<Company_ID>1</Company_ID>
+	</Header>
+	<Message>
+		<PurchaseOrder>
+			<ID>$po.getID()</ID>
+			<Name>$po.getName()</Name>
+			<ItemName>$po.getItemName()</ItemName>
+			<ItemCode>$po.getItemCode()</ItemCode>
+			<ItemCost>$po.getItemCost()</ItemCost>
+			<ItemSupplierCost>$po.getItemSupplierCost()</ItemSupplierCost>
+			<ItemShipperCost>$po.getItemShipperCost()</ItemShipperCost>
+		</PurchaseOrder>
+		<PurchaseOrder>
+			<ID>$po.getID()</ID>
+			<Name>$po.getName()</Name>
+			<ItemName>$po.getItemName()</ItemName>
+			<ItemCode>$po.getItemCode()</ItemCode>
+			<ItemCost>$po.getItemCost()</ItemCost>
+			<ItemSupplierCost>$po.getItemSupplierCost()</ItemSupplierCost>
+			<ItemShipperCost>$po.getItemShipperCost()</ItemShipperCost>
+		</PurchaseOrder>
+		
+	</Message>
+</tXML>

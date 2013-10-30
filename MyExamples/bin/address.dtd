@@ -1,0 +1,6 @@
+<!ELEMENT address (house-no,street,city,state,country)>
+<!ELEMENT house-no (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT country (#PCDATA)>

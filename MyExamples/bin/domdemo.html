@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<script language="javascript">
+
+	function searchByName()
+	{
+		var myNameValue=document.myForm.myName.value;
+		var root = phone.documentElement;	
+		var list = root.getElementsByTagName("contact");
+
+		for(var i=0; i<list.length; i++)
+		{
+			var contact = list.item(i);
+
+			var nameTxt = 
+				contact.firstChild.firstChild.data;
+	
+			if(nameTxt == myNameValue)
+			{
+				alert(contact.lastChild.firstChild.data);
+				return;
+			}
+		}
+
+		alert("No Such Name");
+	}
+
+	function b1_onClick()
+	{
+		var root = phone.documentElement;
+		var list = root.getElementsByTagName("contact");
+		var lastContact = list.item(list.length-1);
+		var phoneEle = lastContact.lastChild;
+		var nameTxt  = phoneEle.firstChild;
+
+		alert( nameTxt.data );	
+	}
+
+		</script>
+	</head>
+
+	<body>
+		<h1>
+		<form name="myForm">
+
+			Phone: <input type='text' name='myPhone' 
+									 value=''>
+
+			<input type="button" name="b1" 
+						 value="Search" 
+						 onClick = "searchByPhone()">
+		</form>
+	</body>
+
+	<xml id = "phone">
+		<phone-book>
+			<contact>
+				<name>Abc</name>
+				<phone>7841517</phone>
+			</contact>
+			<contact>
+				<name>Xyz</name>
+				<phone>7777777</phone>
+			</contact>
+		</phone-book>
+	</xml>
+
+	<xml id = "emp">
+		<employees>
+			<emp empno="205">
+				<ename>Qwerty</ename>
+				<salary>12500</salary>
+			</emp>
+			<emp empno="207">
+				<ename>Abcd</ename>
+				<salary>15500</salary>
+			</emp>
+		</employees>
+	</xml>
+
+
+</html>
