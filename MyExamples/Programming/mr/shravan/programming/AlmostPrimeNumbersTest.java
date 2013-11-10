@@ -1,10 +1,10 @@
-package com.mrshravan.programming.almostprime;
+package mr.shravan.programming;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BetterProgrammerTask {
+public class AlmostPrimeNumbersTest {
     public static String readInput(String s) throws IOException {
         System.out.println(s);
         InputStreamReader isr = new InputStreamReader(System.in);

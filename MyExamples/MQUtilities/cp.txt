@@ -1,0 +1,7 @@
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mq.commonservices.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mq.headers.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mq.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mq.jmqi.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mq.pcf.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\com.ibm.mqjms.jar;
+set classpath=%classpath%;.;C:\Users\stalupula\Documents\GitHub\my.examples\MyExamples\bin\lib\MQ7.5\connector.jar;

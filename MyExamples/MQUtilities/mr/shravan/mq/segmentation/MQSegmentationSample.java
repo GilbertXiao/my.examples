@@ -25,7 +25,7 @@ public class MQSegmentationSample {
 	public static void main(String args[]) {
 		String msg = "This is the msg to be delivered";
 		putMessage(msg);
-	}
+	} 
 
 	public static void putMessage(String qMsgString) {
 		MQQueue myQ = null;
