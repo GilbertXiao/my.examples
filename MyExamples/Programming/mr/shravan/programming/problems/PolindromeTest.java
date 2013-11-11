@@ -1,4 +1,4 @@
-package mr.shravan.programming;
+package mr.shravan.programming.problems;
 
 public class PolindromeTest {
     

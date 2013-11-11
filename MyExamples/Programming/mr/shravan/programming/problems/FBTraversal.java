@@ -1,4 +1,4 @@
-package mr.shravan.programming;
+package mr.shravan.programming.problems;
 
 /**
 	Problem Statement:
@@ -35,7 +35,7 @@ class Member {
 public class FBTraversal{
 	public void printSocialGraph(Member m){
 			System.out.println("Member Name: " +m.name);
-			System.out.println("Member email: " + m.email);
+			// System.out.println("Member email: " + m.email);
 			
 			if( (m.friends == null)||(m.friends.size() == 0 ))
 			{
@@ -64,15 +64,26 @@ public class FBTraversal{
 		
 		
 		//Child-1 children
-		Member c1a = new Member("Grand Child-1","l1a@gmail.com");
-		Member c1b = new Member("Grand Child-2","l1a@gmail.com");
-		Member c1c = new Member("Grand Child-3","l1a@gmail.com");
+		Member c1a = new Member("Grand Child-1A","l1a@gmail.com");
+		Member c1b = new Member("Grand Child-1B","l1a@gmail.com");
+		Member c1c = new Member("Grand Child-1C","l1a@gmail.com");
 		
 		List<Member> members = new ArrayList<Member>();
 		members.add(c1a);
 		members.add(c1b);
 		members.add(c1c);
 		c1.friends = members;
+		
+		//Child-2 children
+		Member c2a = new Member("Grand Child-2A","l1a@gmail.com");
+		Member c2b = new Member("Grand Child-2B","l1a@gmail.com");
+		Member c2c = new Member("Grand Child-2C","l1a@gmail.com");
+		
+		members = new ArrayList<Member>();
+		members.add(c2a);
+		members.add(c2b);
+		members.add(c2c);
+		c2.friends = members;
 		
 		FBTraversal fbt = new FBTraversal();		
 		fbt.printSocialGraph(root);	
