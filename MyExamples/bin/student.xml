@@ -1,0 +1,10 @@
+<students>
+	<student roll-no="101">
+		<name>Abc</name>
+		<result>PASS</result>
+	</student>
+	<student roll-no="102">
+		<name>Xyz</name>
+		<result>FAIL</result>
+	</student>
+</students>

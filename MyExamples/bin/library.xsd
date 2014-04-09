@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+							elementFormDefault="unqualified" 
+							attributeFormDefault="unqualified"
+							xmlns:x = "http://www.a.com" 
+							xmlns:y = "http://www.b.com">
+	
+	<xs:import schemaLocation="a.xsd"/>
+	<xs:import schemaLocation="b.xsd"/>
+	
+	<xs:element name="library">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="book" type="y:bookType" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="bookPK">
+			<xs:selector xpath="book"/>
+			<xs:field xpath="title"/>
+			<xs:field xpath="author"/>
+		</xs:key>		
+	</xs:element>
+	
+</xs:schema>

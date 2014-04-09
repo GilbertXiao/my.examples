@@ -1,0 +1,50 @@
+<html>
+
+<xml id='xmlid'>
+	<!DOCTYPE students [
+	<!NOTATION gif SYSTEM "c:\paint.exe" >
+	<!ENTITY PA101 SYSTEM "pa101.gif" NDATA gif>
+	<!ELEMENT students (student+)>
+	<!ELEMENT student (name)>
+	<!ELEMENT name (#PCDATA)>
+	<!ATTLIST student id ID #REQUIRED >
+	<!ATTLIST student Photo ENTITY #IMPLIED>
+	]>
+	<students>
+		<student id="A101" Photo="PA101">
+			<name>A</name>
+		</student>
+	</students>
+
+</xml>
+
+<head>
+<script language=javascript>
+	function b1_onclick()
+	{
+		var root = xmlid.documentElement;
+		var s1   = root.childNodes.item(0);
+
+		var photoValue = s1.getAttribute("Photo");
+
+		var myDocType = xmlid.doctype;
+		var entityMap = myDocType.entities;
+
+		var entityNode = 
+				entityMap.getNamedItem(photoValue);
+
+		var imgFileName = entityNode.systemId;
+
+		window.open
+		(imgFileName,"student_snap",
+			"width=200,height=200,top=100,left=200");
+
+	}
+</script>
+</head>
+<body>
+<form name=form1>
+	<INPUT type=button value="Test" onclick = "b1_onclick()">
+</form>
+</body>
+</html>

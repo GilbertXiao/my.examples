@@ -1,0 +1,13 @@
+<?xml-stylesheet type="text/xsl" href="person.xsl"?>
+<Delegates>
+	<Name>
+		<FirstName>Abc</FirstName>
+		<LastName>Efg</LastName>
+		<Age>22</Age>
+	</Name>
+	<Name>
+		<FirstName>Pqr</FirstName>
+		<LastName>Xyz</LastName>
+		<Age>25</Age>
+	</Name>
+</Delegates>
