@@ -6,8 +6,21 @@
 	<classpathentry kind="src" path="MQUtilities"/>
 	<classpathentry kind="src" path="Jms/src"/>
 	<classpathentry kind="src" path="Spring-Training"/>
+	<classpathentry kind="src" path="camel-example/src/main/java"/>
+	<classpathentry kind="src" path="camel-example/src/test/java"/>
+	<classpathentry kind="src" path="Hadoop"/>
+	<classpathentry kind="src" path="JAXB/src"/>
+	<classpathentry kind="src" path="Xml/src"/>
+	<classpathentry kind="src" path="Drools/src/main/java"/>
+	<classpathentry kind="src" path="Drools/src/resources"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src/resources"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/2013_LIB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/INTG_LIB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MQ_7.5"/>
@@ -17,5 +30,25 @@
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-beans.jar"/>
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-context.jar"/>
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-core.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CAMEL_LIB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SCOPE_LIB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/AWS_LIB"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HADOOP_LIB"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
