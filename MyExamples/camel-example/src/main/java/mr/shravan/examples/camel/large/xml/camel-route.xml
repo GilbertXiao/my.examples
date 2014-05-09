@@ -1,0 +1,12 @@
+
+<routes xmlns="http://camel.apache.org/schema/spring">
+	<route id="myRoute">
+		<from uri="file://C:/Users/stalupula/Documents/GitHub/my.examples/MyExamples/JAXB/input"/>
+		<split streaming="true">
+			<tokenize token="CALENDAR" xml="true"/>
+			<!-- unmarshal ref="myJaxb"/-->
+			<ref>staxRecord</ref>
+		</split>
+		<to uri="file://C:/Users/stalupula/Documents/GitHub/my.examples/MyExamples/JAXB/output"/>
+	</route>
+</routes>

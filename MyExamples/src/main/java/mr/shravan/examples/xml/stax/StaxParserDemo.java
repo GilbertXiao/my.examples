@@ -1,0 +1,76 @@
+package mr.shravan.examples.xml.stax;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+public class StaxParserDemo {
+	public static void main(String[] args) throws XMLStreamException {
+		List<Employee> empList = null;
+		Employee currEmp = null;
+		String tagContent = null;
+		XMLInputFactory factory = XMLInputFactory.newInstance();
+		XMLStreamReader reader = factory.createXMLStreamReader(ClassLoader
+				.getSystemResourceAsStream("employee.xml"));
+
+		while (reader.hasNext()) {
+			int event = reader.next();
+
+			switch (event) {
+			case XMLStreamConstants.START_ELEMENT:
+				if ("employee".equals(reader.getLocalName())) {
+					currEmp = new Employee();
+					currEmp.id = reader.getAttributeValue(0);
+				}
+				if ("employees".equals(reader.getLocalName())) {
+					empList = new ArrayList();
+				}
+				break;
+
+			case XMLStreamConstants.CHARACTERS:
+				tagContent = reader.getText().trim();
+				break;
+
+			case XMLStreamConstants.END_ELEMENT:
+				String str = reader.getLocalName();
+				if ("employee".equals(str)) {
+					empList.add(currEmp);
+				} else if ("firstName".equals(str)) {
+					currEmp.firstName = tagContent;
+				} else if ("lastName".equals(str)) {
+					currEmp.lastName = tagContent;
+				} else if ("location".equals(str)) {
+					currEmp.location = tagContent;
+				}
+				break;
+
+			case XMLStreamConstants.START_DOCUMENT:
+				empList = new ArrayList();
+				break;
+			}
+
+		}
+		int i = 0;
+		// Print the employee list populated from XML
+		for (Employee emp : empList) {
+			i++;
+		}
+		System.out.println("Total employees: "+ i);
+
+	}
+}
+
+class Employee {
+	String id;
+	String firstName;
+	String lastName;
+	String location;
+
+	@Override
+	public String toString() {
+		return firstName + " " + lastName + "(" + id + ") " + location;
+	}
+}

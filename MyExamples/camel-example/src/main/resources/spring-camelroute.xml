@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+    <package>org.apache.camel.example.spring</package>
+  </camelContext>
+
+<!-- use STaXBuilder to create the expression we want to use in the route below for splitting the XML file -->
+	<!-- notice we use the factory-method to define the stax method, and to pass in the parameter as a constructor-arg -->
+	<bean id="staxRecord" class="org.apache.camel.component.stax.StAXBuilder" factory-method="stax">
+		<!-- FQN class name of the POJO with the JAXB annotations -->
+		<constructor-arg index="0" value="org.apache.camel.component.stax.model.Record"/>
+	</bean>
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<route>
+			<!-- pickup XML files -->
+			<from uri="file://C:/Users/stalupula/Documents/GitHub/my.examples/MyExamples/JAXB/input"/>
+			<split streaming="true">
+				<!-- split the file using StAX (ref to bean above) -->
+				<!-- and use streaming mode in the splitter -->
+				<ref>staxRecord</ref>
+				<!-- and send each splitted to a mock endpoint, which will be a Record POJO instance -->
+				<to uri="file://C:/Users/stalupula/Documents/GitHub/my.examples/MyExamples/JAXB/output"/>
+			</split>
+		</route>
+	</camelContext>
+
+</beans>
