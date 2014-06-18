@@ -6,6 +6,9 @@
         <ksession name="HelloWorldKS"/>
     </kbase>
 	<kbase name="BankKB" packages="mr.shravan.examples.drools.migration">
-        <ksession name="BankKS"/>
+        <ksession name="BankKS" />
+    </kbase>
+    <kbase name="StatelessBankKB" packages="mr.shravan.examples.drools.migration">
+        <ksession name="StatelessBankKS" type="stateless"/>
     </kbase>
 </kmodule>

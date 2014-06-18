@@ -1,0 +1,72 @@
+package mr.shravan.examples.drools
+ 
+import mr.shravan.examples.domain.Bank;
+import mr.shravan.examples.domain.Customer;
+import mr.shravan.examples.domain.Account;
+//declare type State
+//    @propertyChangeSupport
+//end
+rule "Rule-1"
+	salience 100
+	agenda-group "Rule-1"
+	auto-focus true
+	lock-on-active true
+    when
+        m: Bank()
+        c: Customer()
+        a: Account()
+        eval(m.addCustomer(c,a))
+    then
+        System.out.println("Rule-1 Demonstrating <EqualTo> Operator" );
+        kcontext.getKieRuntime().getAgenda().getAgendaGroup("Rule-2").setFocus();
+end
+
+rule "Rule-2"
+	salience 90
+	agenda-group "Rule-2"
+	lock-on-active true
+    when
+        m : Bank( status == Bank.INACTIVE, condition1, message : message )
+    then
+    	m.setMessage("Rule-2:Set account as active");
+    	m.setStatus(Bank.ACTIVE); 
+	    modify (m) {
+	     setMessage("Set account as active"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+	    kcontext.getKieRuntime().getAgenda().getAgendaGroup("Rule-3").setFocus();
+		System.out.println("Rule-2:"+drools.getClass());
+end
+
+rule "Rule-3"
+	salience 80
+	agenda-group "Rule-3"
+	lock-on-active true
+    when
+        m : Bank(status == Bank.ACTIVE, condition2, message : message )
+    then
+        System.out.println( "Rule-3: "+message );
+        m.setMessage("Rule-3:Reset account as inactive");
+        m.setStatus(Bank.INACTIVE); 
+        modify (m) {
+	     setMessage("Reset account as inactive"),
+	     setStatus(Bank.INACTIVE) 
+	    };
+	    kcontext.getKieRuntime().getAgenda().getAgendaGroup("Rule-4").setFocus();
+end
+
+rule "Rule-4"
+	salience 70
+	agenda-group "Rule-4"
+	lock-on-active true
+    when
+        m : Bank( status == Bank.INACTIVE, condition3, message : message )
+    then
+        System.out.println( "Rule-4: "+message );
+        m.setMessage("Rule-4:Again Reset account as inactive");
+	    m.setStatus(Bank.ACTIVE);
+        modify (m) {
+	     setMessage("Again Reset account as inactive"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+end

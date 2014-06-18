@@ -1,0 +1,125 @@
+package mr.shravan.examples.drools
+ 
+import mr.shravan.examples.domain.Bank;
+import mr.shravan.examples.domain.Customer;
+import mr.shravan.examples.domain.Account;
+
+/**
+<Rule domainGroupId="4000" name="invoicedBookingSecondaryCarrierMissMatch" 
+	description="invoicedBookingSecondaryCarrierMissMatch - a business rule model" ifNodeCnt="1" thenNodeCnt="2">
+	<If>
+		<EqualTo>
+			<MethodCall methodName="secondaryCarrierMatches">
+				<Object className="com.manh.tpe.invoice.validation.InvoicedBookingValidationHelper"/>
+				<Object className="com.manh.tpe.invoice.InvoiceData"/>
+				<Object className="com.manh.tpe.invoice.booking.InvoicedBookingData"/>
+			</MethodCall>
+			<Boolean value="false"/>
+		</EqualTo>
+	</If>
+	<Then>
+		<Action>
+			<MethodCall methodName="setInvoiceResponsibility">
+				<Object className="com.manh.tpe.invoice.validation.InvoicedObjectValidationHelper"/>
+				<Object className="com.manh.tpe.invoice.InvoiceData"/>
+				<String value="Carrier"/>
+			</MethodCall>
+		</Action>
+		<Action>
+			<MethodCall methodName="addExceptionToInvoicedObject">
+				<Object className="com.manh.tpe.invoice.validation.InvoicedBookingValidationHelper"/>
+				<Object className="com.manh.tpe.invoice.booking.InvoicedBookingData"/>
+				<Int value="4330068"/>
+				<List className="java.util.ArrayList">
+					<String value="6011"/>
+					<GetProperty propName="secondaryCarrierCode">
+						<Object className="com.manh.tpe.invoice.booking.InvoicedBookingData"/>
+					</GetProperty>
+					<MethodCall methodName="getBookingSecondaryCarrierCode">
+						<Object className="com.manh.tpe.invoice.validation.InvoicedBookingValidationHelper"/>
+						<Object className="com.manh.tpe.invoice.InvoiceData"/>
+						<Object className="com.manh.tpe.invoice.booking.InvoicedBookingData"/>
+					</MethodCall>
+				</List>
+			</MethodCall>
+		</Action>
+	</Then>
+</Rule>
+*/
+no-loop true
+
+rule "Rule-1"
+	ruleflow-group "mytest"
+	lock-on-active true
+	//agenda-group "Rule-1"
+	//auto-focus true
+	//enabled true
+	//no-loop true
+    when
+        m: Bank()
+        c: Customer()
+        a: Account()
+        eval(m.addCustomer(c,a))
+    then
+        System.out.println("Rule-1 Demonstrating <EqualTo> Operator" );
+        //drools.getKnowledgeRuntime().getAgenda().getAgendaGroup( "Rule-2" ).setFocus();
+end
+
+rule "Rule-2"
+	//agenda-group "Rule-2"
+	//lock-on-active true
+	//no-loop true
+	ruleflow-group "mytest"
+	lock-on-active true
+    when
+        m : Bank( status == Bank.INACTIVE, message : message )
+    then
+	    modify (m) {
+	     setMessage("Set account as active"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+	    
+		System.out.println( "Rule-2:"+ message );
+		System.out.println(drools.getClass());
+		//retract(m);
+end
+
+rule "Rule-3"
+	ruleflow-group "mytest"
+	lock-on-active true
+    when
+        m : Bank( status == Bank.ACTIVE, message : message )
+    then
+        System.out.println( "Rule-3: "+message );
+        modify (m) {
+	     setMessage("Reset account as inactive"),
+	     setStatus(Bank.INACTIVE) 
+	    };
+	    
+end
+
+rule "Rule-4"
+	ruleflow-group "mytest"
+	lock-on-active true
+    when
+        m : Bank( status == Bank.INACTIVE, message : message )
+    then
+        System.out.println( "Rule-4: "+message );
+        modify (m) {
+	     setMessage("Again Reset account as inactive"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+end
+/*
+rule "Invoice Rule"
+	lock-on-active true
+	no-loop true
+    when
+        m: InvoicedBookingValidationHelper()
+        c: InvoiceData()
+        a: InvoicedBookingData()
+        eval(m.secondaryCarrierMatches(c,a))
+    then
+        //TODO
+end
+*/

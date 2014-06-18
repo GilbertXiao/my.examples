@@ -1,0 +1,1 @@
+/u01/tools/apache-jmeter-2.8/bin/jmeter.sh -n -t Solr-PE-Test.jmx -l Solr-PE-Test_Run_1.jtl -Jusers=6 -Jloopcount=10000

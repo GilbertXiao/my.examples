@@ -1,37 +1,23 @@
 package mr.shravan.examples.domain;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
-
-import mr.shravan.examples.drools.DroolsExample.Message;
 
 public class Bank {
 	public static final int INACTIVE = 0;
 	public static final int ACTIVE = 1;
-
-	private String bankID;
-	private String bankName;
 	private String message;
 	private int status;
+	private boolean condition1 = true;
+	private boolean condition2 = true;
+	private boolean condition3 = true;
+	private boolean condition4 = true;
+	
+	private final PropertyChangeSupport changes  = new PropertyChangeSupport( this );
 	
 	private List<Customer> customers = new ArrayList<Customer>();
-	
-
-	public String getBankID() {
-		return bankID;
-	}
-
-	public void setBankID(String bankID) {
-		this.bankID = bankID;
-	}
-
-	public String getBankName() {
-		return bankName;
-	}
-
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
 
 	public List<Customer> getCustomers() {
 		return customers;
@@ -53,26 +39,68 @@ public class Bank {
 		return this.status;
 	}
 
-	public void setStatus(final int status) {
-		this.status = status;
+	public void setStatus(final int newState) {
+		int oldState = this.status;
+		this.status = newState;
+		this.changes.firePropertyChange( "status",
+                oldState,
+                newState );
 	}
 
-	public static Message doSomething(Message message) {
-		return message;
+	public boolean isCondition1() {
+		return condition1;
 	}
 
-	public boolean isSomething(String msg, List<Object> list) {
-		list.add(this);
-		return this.message.equals(msg);
+	public void setCondition1(boolean condition1) {
+		this.condition1 = condition1;
 	}
-	
+
+	public boolean isCondition2() {
+		return condition2;
+	}
+
+	public void setCondition2(boolean condition2) {
+		this.condition2 = condition2;
+	}
+
+	public boolean isCondition3() {
+		return condition3;
+	}
+
+	public void setCondition3(boolean condition3) {
+		this.condition3 = condition3;
+	}
+
+	public boolean isCondition4() {
+		return condition4;
+	}
+
+	public void setCondition4(boolean condition4) {
+		this.condition4 = condition4;
+	}
+
 	public boolean retTrue() {
 		return true;
 	}
-	
+
 	public boolean addCustomer(Customer c, Account a) {
 		System.out.println("Adding customer...");
 		customers.add(c);
 		return true;
+	}
+    public void addPropertyChangeListener(final PropertyChangeListener l) {
+        this.changes.addPropertyChangeListener( l );
+    }
+
+    public void removePropertyChangeListener(final PropertyChangeListener l) {
+        this.changes.removePropertyChangeListener( l );
+    }
+
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("Bank[").append("Status:" + status)
+				.append(",Message:" + message).append("]");
+		return sb.toString();
 	}
 }

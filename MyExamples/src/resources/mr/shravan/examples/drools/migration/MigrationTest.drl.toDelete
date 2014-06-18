@@ -1,0 +1,61 @@
+package mr.shravan.examples.drools
+ 
+import mr.shravan.examples.domain.Bank;
+import mr.shravan.examples.domain.Customer;
+import mr.shravan.examples.domain.Account;
+//declare type State
+//    @propertyChangeSupport
+//end
+rule Bootstrap
+	salience 100
+    when
+        m: Bank()
+        c: Customer()
+        a: Account()
+        eval(m.addCustomer(c,a))
+    then
+        System.out.println("Rule-1 Demonstrating <EqualTo> Operator" );
+end
+
+rule "Rule-2"
+	salience 90
+    when
+        m : Bank( status == Bank.INACTIVE, condition1, message : message )
+    then
+    	m.setMessage("Rule-2:Set account as active");
+    	m.setStatus(Bank.ACTIVE); 
+	    modify (m) {
+	     setMessage("Set account as active"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+	    
+		System.out.println("Rule-2:"+drools.getClass());
+end
+
+rule "Rule-3"
+	salience 80
+    when
+        m : Bank(status == Bank.ACTIVE, condition2, message : message )
+    then
+        System.out.println( "Rule-3: "+message );
+        m.setMessage("Rule-3:Reset account as inactive");
+        m.setStatus(Bank.INACTIVE); 
+        modify (m) {
+	     setMessage("Reset account as inactive"),
+	     setStatus(Bank.INACTIVE) 
+	    };
+end
+
+rule "Rule-4"
+	salience 70
+    when
+        m : Bank( status == Bank.INACTIVE, condition3, message : message )
+    then
+        System.out.println( "Rule-4: "+message );
+        m.setMessage("Rule-4:Again Reset account as inactive");
+	    m.setStatus(Bank.ACTIVE);
+        modify (m) {
+	     setMessage("Again Reset account as inactive"),
+	     setStatus(Bank.ACTIVE) 
+	    };
+end

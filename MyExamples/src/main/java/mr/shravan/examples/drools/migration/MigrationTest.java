@@ -16,23 +16,50 @@
 
 package mr.shravan.examples.drools.migration;
 
+import java.util.Arrays;
+
 import mr.shravan.examples.domain.Account;
 import mr.shravan.examples.domain.Bank;
 import mr.shravan.examples.domain.Customer;
 
 import org.kie.api.KieServices;
-import org.kie.api.event.rule.DebugAgendaEventListener;
-import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.StatelessKieSession;
 
 /**
  * This is a sample file to launch a rule package from a rule source file.
+ *  -Ddrools.sequential=true
  */
-public class BREMigrationExample {
+public class MigrationTest {
 
     public static final void main(final String[] args) {
-        // KieServices is the factory for all KIE services 
+        stateful();
+        //stateless(); 
+    }
+
+	private static void stateless() {
+		KieContainer kc = KieServices.Factory.get().getKieClasspathContainer();
+        System.out.println(kc.verify().getMessages().toString());
+        StatelessKieSession ksession = kc.newStatelessKieSession( "StatelessBankKS");
+
+        Bank bank = new Bank();
+        bank.setStatus(Bank.INACTIVE);
+        bank.setMessage("Account is inactive");
+        
+        Customer cust = new Customer();
+        cust.setCustNo("1");
+        
+        Account acc = new Account();
+        acc.setAccNo("1");
+
+        ksession.execute( Arrays.asList( new Object[]{bank, cust,acc} ) );
+
+        System.out.println(bank);
+	}
+
+	private static void stateful() {
+		// KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
         
         // From the kie services, a container is created from the classpath
@@ -42,6 +69,7 @@ public class BREMigrationExample {
         // its definition and configuration in the META-INF/kmodule.xml file 
         KieSession ksession = kc.newKieSession("BankKS");
         
+        
         // Once the session is created, the application can interact with it
         // In this case it is setting a global as defined in the 
         // org/drools/examples/helloworld/HelloWorld.drl file
@@ -49,8 +77,8 @@ public class BREMigrationExample {
 //                            new ArrayList<Object>() );
 
         // The application can also setup listeners
-        ksession.addEventListener( new DebugAgendaEventListener() );
-        ksession.addEventListener( new DebugRuleRuntimeEventListener() );
+//        ksession.addEventListener( new DebugAgendaEventListener() );
+//        ksession.addEventListener( new DebugRuleRuntimeEventListener() );
 
 //        // To setup a file based audit logger, uncomment the next line 
 //         KieRuntimeLogger logger = ks.getLoggers().newFileLogger( ksession, "./helloworld" );
@@ -58,7 +86,9 @@ public class BREMigrationExample {
 //        // To setup a ThreadedFileLogger, so that the audit view reflects events whilst debugging,
 //        // uncomment the next line
 //         KieRuntimeLogger logge1 = ks.getLoggers().newThreadedFileLogger( ksession, "./helloworld", 1000 );
-
+        
+//        Agenda agenda = ksession.getAgenda();
+//        agenda.getAgendaGroup( "test-1" ).setFocus();
         // The application can insert facts into the session
         final Bank bank = new Bank();
         bank.setStatus(Bank.INACTIVE);
@@ -82,6 +112,7 @@ public class BREMigrationExample {
 
         // and then dispose the session
         ksession.dispose();
-    }
+        System.out.println(bank);
+	}
 
 }
