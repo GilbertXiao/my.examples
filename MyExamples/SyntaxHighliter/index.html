@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>SyntaxHighlighter - Bash Example</title>
+  </head>
+  <body class='no_sponsor'>
+    <div id='title'>
+      <h1>
+        <a href='/SyntaxHighlighter'>SyntaxHighlighter</a>
+        <span id='version'>3.0.83</span>
+      </h1>
+      <h2>Bash Example</h2>
+    </div>
+    <div id='content'>
+      <pre class='brush: bash'>
+      #!/bin/bash
+      X=3
+      Y=4
+      empty_string=""
+      if [ $X -lt $Y ]	# is $X less than $Y ? 
+      then
+      	echo "\$X=${X}, which is smaller than \$Y=${Y}"
+      fi
+      
+      if [ -n "$empty_string" ]; then
+      	echo "empty string is non_empty"
+      fi
+      
+      if [ -e "${HOME}/.fvwmrc" ]; then 			# test to see if ~/.fvwmrc exists
+      	echo "you have a .fvwmrc file"
+      	if [ -L "${HOME}/.fvwmrc" ]; then 		# is it a symlink ?  
+      		echo "it's a symbolic link"
+      	elif [ -f "${HOME}/.fvwmrc" ]; then 	# is it a regular file ?
+      		echo "it's a regular file"
+      	fi
+      else
+      	echo "you have no .fvwmrc file"
+      fi
+      </pre>
+      <h2>JavaScript Example</h2>
+      <pre class='brush: js'>
+var packageImporter = JavaImporter(
+    Packages.java.io,
+    Packages.java.util,
+    Packages.java.lang,
+    java.util.Set,
+    java.util.HashSet,
+    java.util.ArrayList,
+    org.apache.commons.httpclient.HttpClient,
+    org.apache.commons.httpclient.methods.PostMethod,
+    org.mozilla.javascript.Kit,  
+    com.deposco.core.util
+);
+with (packageImporter) {
+
+  var CONFIG_URL ="URL";
+  var RESULT_CNT = "resultCount";
+  var EMAIL_ID = "adminEmailId";
+
+  function sendEmail(mailSubject, mailText) {
+    var mailService = applicationContext.getBean("mailerService");
+    var mailToList = new HashSet();
+    mailToList.add(params.get(EMAIL_ID));
+    mailService.createAndSendMail(mailToList, mailSubject, mailText, null, null);
+  }
+  function getContainerHistList() {
+    var hql = 
+      "select ch from OrderHeader1 oh " + 
+      "    inner join oh.orderShipments s  " + 
+      "    inner join s.containerHist ch " + 
+      "    where oh.currentStatus in ('Complete', 'Back Ordered') " + 
+      "    and oh.orderSource='X-CART' and s.exportReference is null";
+
+    var session = genericDAO.getCurrentSession();
+    var query = session.createQuery(hql);
+      var resultCount = params.get(RESULT_CNT);
+    query.setMaxResults(resultCount);
+    
+    return query.list();
+  }
+  function buildXMLFromContHistList(contHistList){
+    var amazon = applicationContext.getBean("awsMarketWebService");
+    var envelope = amazon.buildAmazonEnvelope(contHistList);
+    
+      var xml = null;
+    xml = CoreUtil.marshall(Kit.classOrNull("com.deposco.mws.AmazonEnvelope"), envelope);
+    log.info(xml);
+      return xml;
+  }//Convert to XML
+
+  function invokeXCart(xml){
+    var url = params.get(CONFIG_URL);
+    log.debug("Posting the request over HTTP to X-Cart:");
+    log.debug("URL: "+url)
+    var httpClient = new HttpClient();
+    var postMethod = new PostMethod(url);
+    postMethod.setRequestHeader("Content-Type", "text/xml");
+    var stream = new ByteArrayInputStream(xml.getBytes("iso-8859-1"));
+    postMethod.setRequestBody(stream);
+    httpClient.executeMethod(postMethod);             
+    response = postMethod.getResponseBodyAsString();
+    responseCode = postMethod.getStatusCode();
+    postMethod.releaseConnection(); 
+      return response;
+  }//invokeXCart
+
+  function updateShipmentListUsingHQL(contHistList) {
+
+    var shipIdList = new ArrayList();
+    for each (var contHist in contHistList.toArray()) {
+      shipIdList.add(contHist.shipment.id);
+    }
+    log.debug("Shipments to get Updated: "+ shipIdList);
+    log.debug("Shipment count to get Updated: "+ shipIdList.size());
+
+    var hql = "update Shipment set exportReference = 1 where id in (:shipId)"; 
+    var session = genericDAO.getCurrentSession();
+    var query = session.createQuery(hql);
+      //query.setParameter("shipId",new Packages.java.lang.Long(130));
+      query.setParameterList("shipId",shipIdList);
+        var res = query.executeUpdate();    
+    log.debug("Update count is: "+ res);
+  }
+
+  function isConfigValid(){
+    if (params.get(CONFIG_URL)== null || params.get(RESULT_CNT) == null && params.get(EMAIL_ID)== null){
+      var mailSubject="Error occurred while confirming the shipment to X-Cart";
+      var mailBody="Invalid configuration. Configuaration should be similar to <br>";
+      mailBody = mailBody +
+        "process_script=X-Cart Shipment Confirmation;resultCount=10;URL=http://dev.qtmsoft.com/~anachronos/deposco/dp_callback.php;no_tx=true;adminEmailId=stalupula@deposco.com";
+      log.error(mailBody);
+      sendEmail(mailSubject,mailBody);
+      return false;
+    }
+    return true;
+  }
+  function main(){
+    try{
+      var contHistList = getContainerHistList();
+      log.info("HQL Result - awesome:."+contHistList);
+      var xml = buildXMLFromContHistList(contHistList);
+        var response = invokeXCart(xml);
+      log.debug("HTTP Response Code: "+ responseCode);
+      log.debug("Response from URL: "+response);
+      if(responseCode>=200 && responseCode<=300){
+          log.info("Now update the shipment export reference to 1");
+          updateShipmentListUsingHQL(contHistList);
+        }
+    } catch (res) {
+        var mailSubject="Error occurred while confirming the shipment to X-Cart";
+        var mailBody="Error occurred while confirming the shipment to X-Cart.<br>";
+        mailBody = mailBody + "Exception: "+res;
+        sendEmail(mailSubject,mailBody);
+              log.error("Failed Invoking the HTTP URL. ", res);
+              var es = res;
+              if (res.javaException != undefined) {
+                  log.debug("res.javaException is found. ");
+                  es = res.javaException;
+                  log.error("Failed invoking X-Cart. javaException: ", es);
+              } else if (res.rhinoException != undefined) {
+                  log.debug("res.rhinoException is found. ");                
+                  es = res.rhinoException;
+                  log.error("Failed invoking X-Cart. rhinoException: ", es);
+              } else {
+                  log.debug("Neither res.javaException nor res.rhinoException is found. ");
+                  log.error("Failed invoking X-Cart. ", res);
+              }            
+      }
+  }//main
+
+  var isValid = isConfigValid();
+        
+  if(isValid){
+      main();
+  }
+  
+
+     
+};    
+      </pre>
+    </div>
+    </div>
+  </body>
+  <link href='./styles/shCore.css' rel='stylesheet' type='text/css'>
+  <link href='./styles/shThemeDefault.css' rel='stylesheet' type='text/css'>
+  <script src='./scripts/shCore.js' type='text/javascript'></script>
+  <script src='./scripts/shBrushJScript.js' type='text/javascript'></script>
+  <script src='./scripts/shBrushBash.js' type='text/javascript'></script>
+  <script type="text/javascript">
+     SyntaxHighlighter.all()
+  </script>
+</html>

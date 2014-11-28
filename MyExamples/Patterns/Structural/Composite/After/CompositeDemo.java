@@ -21,6 +21,8 @@ class File implements AbstractFile
 // Directory implements the "lowest common denominator"
 class Directory implements AbstractFile
 {
+	private String m_name;
+    private ArrayList m_files = new ArrayList();
     public Directory(String name)
     {
         m_name = name;
@@ -41,8 +43,7 @@ class Directory implements AbstractFile
         }
         CompositeDemo.g_indent.setLength(CompositeDemo.g_indent.length() - 3);
     }
-    private String m_name;
-    private ArrayList m_files = new ArrayList();
+   
 }
 
 public class CompositeDemo
@@ -51,8 +52,10 @@ public class CompositeDemo
 
     public static void main(String[] args)
     {
-        Directory one = new Directory("dir111"), two = new Directory("dir222"),
+        Directory one = new Directory("dir111"), 
+        two = new Directory("dir222"),
           thr = new Directory("dir333");
+          
         File a = new File("a"), b = new File("b"), c = new File("c"), d = new
           File("d"), e = new File("e");
         one.add(a);

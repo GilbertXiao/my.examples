@@ -17,6 +17,7 @@
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-beans.jar"/>
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-context.jar"/>
 	<classpathentry kind="lib" path="Spring-Training/lib/spring-core.jar"/>
+	<classpathentry kind="lib" path="lib/org.apache.oltu.oauth2.common-1.0.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CAMEL_LIB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SCOPE_LIB"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/AWS_LIB"/>
@@ -26,10 +27,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="/Users/stalupula/.m2/repository/org/apache/velocity/velocity/1.7/velocity-1.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
