@@ -10,7 +10,12 @@ the data might contain & or ! or % or ' or # etc and $name!
 	</Header>
 	<Message>
 		<PurchaseOrder>
-			<ID>$po.getID()</ID>
+			#if( $po.getName().startsWith(  "UPS"  ))
+			
+			This is UPS 
+			#elseif($po.getName().startsWith(  "USPS"  ))
+			This is USPS
+			#end
 			<Name>$po.getName()</Name>
 			<ItemName>$po.getItemName()</ItemName>
 			<ItemCode>$po.getItemCode()</ItemCode>

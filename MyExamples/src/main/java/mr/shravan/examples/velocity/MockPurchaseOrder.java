@@ -2,7 +2,7 @@ package mr.shravan.examples.velocity;
 
 public class MockPurchaseOrder {
     private String id="1";
-    private String name="Mock_PO1";
+	private String name = "UPSsjsfj";
     private String itemName="Sony TV";
     private String itemCode="TV";
     private String itemCost="100";

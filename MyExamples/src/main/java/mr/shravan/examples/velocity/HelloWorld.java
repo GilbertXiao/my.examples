@@ -23,8 +23,9 @@ public class HelloWorld {
         Template t = ve.getTemplate("templates/HelloWorld.vm");
         /* create a context and add data */
         VelocityContext context = new VelocityContext();
-
+		MockPurchaseOrder order = new MockPurchaseOrder();
         context.put("name", "Wor & ld");
+		context.put("po", order);
         context.put("CONTEXT", context);
 
         EventCartridge ec = new EventCartridge();
